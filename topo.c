@@ -1,5 +1,5 @@
 #include<stdio.h>
-int a[10][10],vis[10],exp[10],n,i,j=0;
+int a[10][10],vis[10],exp[10],n,j=0;
 void dfs(int v)
 {
     int i;
@@ -31,12 +31,14 @@ void main()
     }
     for(i=1;i<=n;i++)
         vis[i]=0;
+
+
     for(i=1;i<=n;i++)
     {
         if(vis[i]==0)
             dfs(i);
     }
     printf("Topological Order:\n");
-    for(i=1;i<n;i++)
+    for(i=n-1;i>=0;i--)
         printf("%d ",exp[i]);
 }
