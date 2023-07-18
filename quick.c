@@ -4,14 +4,14 @@ clock_t start, end;
 int parti(int a[],int low,int high)
 {
     int i,j,temp,pivot;
-    pivot=a[low];
-    i=low++;
+    pivot=low;
+    i=low+1;
     j=high;
     while(i<=j)
     {
-        while(a[i]<=pivot)
+        while(a[i]<a[pivot])
             i++;
-        while(a[j]>pivot)
+        while(a[j]>a[pivot])
             j--;
         if(i<j)
         {
@@ -48,5 +48,8 @@ void main()
     qsort(a,0,n-1);
     end=clock();
     double t=((double)end-start)/CLOCKS_PER_SEC;
-    printf("Time Taken: %lf",t);
+    printf("After sorting: ");
+    for(i=0;i<n;i++)
+        printf("%d ",a[i]);
+    printf("\nTime Taken: %lf",t);
 }
