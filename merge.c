@@ -17,8 +17,8 @@ void merge(int a[],int low,int mid,int high)
     while(i<=mid)
         c[k++]=a[i++];
     while(j<=high)
-        c[i++]=a[j++];
-    for(i=low;i<=high;i++)
+        c[k++]=a[j++];
+    for(i=0;i<=high;i++)
         a[i]=c[i];
 }
 void mergesort(int a[],int low, int high)
@@ -27,7 +27,7 @@ void mergesort(int a[],int low, int high)
     if(low<high)
     {
         mid=(low+high)/2;
-        mergesort(a,low,mid-1);
+        mergesort(a,low,mid);
         mergesort(a,mid+1,high);
         merge(a,low,mid,high);
     }
@@ -45,5 +45,8 @@ void main()
     mergesort(a,0,n-1);
     end=clock();
     double t=((double)end-start)/CLOCKS_PER_SEC;
-    printf("Time Taken: %lf",t);
+    printf("After sorting: ");
+    for(i=0;i<n;i++)
+        printf("%d ",a[i]);
+    printf("\nTime Taken: %lf",t);
 }
